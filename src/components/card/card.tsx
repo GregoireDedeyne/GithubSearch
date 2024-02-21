@@ -8,7 +8,22 @@ import {
   Image,
 } from 'semantic-ui-react';
 
-const CardResult = ({ repo }) => (
+interface Repository {
+  id: number;
+  name: string;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+  description: string;
+  stargazers_count: number;
+}
+
+interface repo {
+  repo: Repository;
+}
+
+const CardResult = ({ repo }: repo) => (
   <Card>
     <Image src={repo.owner.avatar_url} wrapped ui={false} />
     <CardContent>
