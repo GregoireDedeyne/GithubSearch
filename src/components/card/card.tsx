@@ -24,7 +24,7 @@ interface repo {
 }
 
 const CardResult = ({ repo }: repo) => (
-  <Card>
+  <Card href="#card-example-link-card">
     <Image src={repo.owner.avatar_url} wrapped ui={false} />
     <CardContent>
       <CardHeader>{repo.name}</CardHeader>

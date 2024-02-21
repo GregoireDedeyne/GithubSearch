@@ -1,6 +1,8 @@
 import CardResult from './card';
-import { CardGroup } from 'semantic-ui-react';
+import { CardGroup, Loader } from 'semantic-ui-react';
 import { NextButton } from './nextButton';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import LoaderList from './loader';
 
 interface Repository {
   id: number;
@@ -20,12 +22,26 @@ interface repoItem {
 
 // affichage de la liste des repos
 export function CardList({ repoItem, handleNext }: repoItem) {
+  console.log(repoItem.length);
+
+  const totalItem = 30;
+
+  const hasMoreItems = repoItem.length < totalItem;
+
   return (
-    <CardGroup>
-      {repoItem.map((item) => (
-        <CardResult key={item.id} repo={item} />
-      ))}
-      {repoItem.length > 0 && <NextButton handleNext={handleNext} />}{' '}
-    </CardGroup>
+    <InfiniteScroll
+      dataLength={repoItem.length}
+      next={handleNext}
+      hasMore={hasMoreItems}
+      loader={<LoaderList />}
+      endMessage={<p>End of List</p>}
+    >
+      <CardGroup>
+        {repoItem.map((item) => (
+          <CardResult key={item.id} repo={item} />
+        ))}
+      </CardGroup>
+      <NextButton handleNext={handleNext} />
+    </InfiniteScroll>
   );
 }
