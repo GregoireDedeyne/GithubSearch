@@ -1,5 +1,6 @@
 import CardResult from './card';
 import { CardGroup } from 'semantic-ui-react';
+import { NextButton } from './nextButton';
 
 interface Repository {
   id: number;
@@ -14,14 +15,17 @@ interface Repository {
 
 interface repoItem {
   repoItem: Repository[];
+  handleNext: () => void;
 }
 
-export function CardList({ repoItem }: repoItem) {
+// affichage de la liste des repos
+export function CardList({ repoItem, handleNext }: repoItem) {
   return (
     <CardGroup>
       {repoItem.map((item) => (
         <CardResult key={item.id} repo={item} />
       ))}
+      {repoItem.length > 0 && <NextButton handleNext={handleNext} />}{' '}
     </CardGroup>
   );
 }

@@ -14,7 +14,7 @@ interface Repository {
 interface repoItem {
   repoItem: Repository[];
 }
-
+// affichage du nombre de repo
 const ResultNumber = ({ repoItem }: repoItem) => (
   <Segment>La recherche a donné {repoItem.length} résultats</Segment>
 );
