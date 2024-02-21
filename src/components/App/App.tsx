@@ -1,26 +1,16 @@
-import logo from '../../assets/logo.svg';
-
+import { CardList } from '../card/cardList';
+import { Header } from '../header/header';
 import './App.scss';
+import { useState } from 'react';
 
 function App() {
+  //  useState pour stocker les repo
+  const [repo, setRepo] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/components/App/App.tsx</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://react.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <CardList />
     </div>
   );
 }
