@@ -44,7 +44,9 @@ export function CardList({ repoItem, handleNext, handleLeft }: repoItem) {
         ))}
       </CardGroup>
 
-      <NextButton handleNext={handleNext} handleLeft={handleLeft} />
+      {repoItem.length > 0 && ( // Condition pour afficher les boutons uniquement si la liste n'est pas vide
+        <NextButton handleNext={handleNext} handleLeft={handleLeft} />
+      )}
       {/* // </InfiniteScroll> */}
     </div>
   );
