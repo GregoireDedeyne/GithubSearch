@@ -21,6 +21,9 @@ function App() {
   const handleNext = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
+  const handleLeft = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
 
   // utilisation de useEffect pour éviter les effets de bord
   useEffect(() => {
@@ -46,7 +49,11 @@ function App() {
   return (
     <div className="App">
       <Header repoItem={repo} onSearch={handleSearch} />
-      <CardList repoItem={repo} handleNext={handleNext} />
+      <CardList
+        repoItem={repo}
+        handleNext={handleNext}
+        handleLeft={handleLeft}
+      />
     </div>
   );
 }

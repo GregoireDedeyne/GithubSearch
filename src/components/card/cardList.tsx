@@ -18,30 +18,34 @@ interface Repository {
 interface repoItem {
   repoItem: Repository[];
   handleNext: () => void;
+  handleLeft: () => void;
 }
 
 // affichage de la liste des repos
-export function CardList({ repoItem, handleNext }: repoItem) {
+export function CardList({ repoItem, handleNext, handleLeft }: repoItem) {
   console.log(repoItem.length);
 
-  const totalItem = 30;
+  // const totalItem = 10;
 
-  const hasMoreItems = repoItem.length < totalItem;
+  // const hasMoreItems = repoItem.length < totalItem;
 
   return (
-    <InfiniteScroll
-      dataLength={repoItem.length}
-      next={handleNext}
-      hasMore={hasMoreItems}
-      loader={<LoaderList />}
-      endMessage={<p>End of List</p>}
-    >
+    // <InfiniteScroll
+    //   dataLength={repoItem.length}
+    //   next={handleNext}
+    //   hasMore={hasMoreItems}
+    //   loader={<LoaderList />}
+    //   endMessage={<p>End of List</p>}
+    // >
+    <div>
       <CardGroup>
         {repoItem.map((item) => (
           <CardResult key={item.id} repo={item} />
         ))}
       </CardGroup>
-      <NextButton handleNext={handleNext} />
-    </InfiniteScroll>
+
+      <NextButton handleNext={handleNext} handleLeft={handleLeft} />
+      {/* // </InfiniteScroll> */}
+    </div>
   );
 }
