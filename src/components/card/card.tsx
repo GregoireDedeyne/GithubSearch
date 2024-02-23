@@ -17,7 +17,7 @@ interface Repository {
   };
   description: string;
   stargazers_count: number;
-  url: string;
+  html_url: string;
 }
 
 interface repo {
@@ -25,7 +25,7 @@ interface repo {
 }
 
 const CardResult = ({ repo }: repo) => (
-  <Card href={repo.url}>
+  <Card href={repo.html_url}>
     <Image src={repo.owner.avatar_url} wrapped ui={false} />
     <CardContent>
       <CardHeader>{repo.name}</CardHeader>

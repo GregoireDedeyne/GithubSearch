@@ -13,7 +13,7 @@ interface Repository {
   };
   description: string;
   stargazers_count: number;
-  url: string;
+  html_url: string;
 }
 
 interface repoItem {
