@@ -13,6 +13,8 @@ function App() {
   // useState pour stocker le nombre de page
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [total, setTotal] = useState(Number);
+
   const handleSearch = (searchTerm: string): void => {
     setSearchTerm(searchTerm);
   };
@@ -34,6 +36,9 @@ function App() {
             `https://api.github.com/search/repositories?q=${searchTerm}&sort=stars&order=desc&page=${currentPage}&per_page=9`
           );
           // MAJ des données dans le State
+          setTotal(response.data.total_count);
+          console.log(total);
+
           setRepo(response.data.items);
           console.log(response.data.items);
         } catch (error) {
@@ -48,7 +53,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header repoItem={repo} onSearch={handleSearch} />
+      <Header repoItem={repo} onSearch={handleSearch} total={total} />
       <CardList
         repoItem={repo}
         handleNext={handleNext}

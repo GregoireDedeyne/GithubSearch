@@ -15,13 +15,14 @@ interface Repository {
 interface repoItem {
   repoItem: Repository[];
   onSearch: (searchTerm: string) => void;
+  total: number;
 }
 
-export function Header({ repoItem, onSearch }: repoItem) {
+export function Header({ repoItem, onSearch, total }: repoItem) {
   return (
     <div>
       <SearchBarre onSearch={onSearch} />
-      <ResultNumber repoItem={repoItem} />
+      <ResultNumber repoItem={total} />
     </div>
   );
 }
